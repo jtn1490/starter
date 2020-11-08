@@ -1,0 +1,11 @@
+{
+  "NODE_ENV": "local",
+  "APP_PORT": 3000,
+  "mongodb": {
+    "url": "mongodb://localhost:27017/starter"
+  },
+  "JWT": {
+    "KEY": "LION",
+    "EXPIRATION": 86400
+  }
+}
