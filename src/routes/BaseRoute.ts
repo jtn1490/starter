@@ -1,23 +1,16 @@
 // https://khalilstemmler.com/articles/enterprise-typescript-nodejs/clean-consistent-expressjs-controllers/
 
-import { InboundContract, IOutboundContract, IError } from "src/models";
 import { Response, Request, NextFunction } from "express";
 
 export abstract class BaseRoute {
   route: string;
   method: string;
-  inboundContract: InboundContract;
-  outboundContract: IOutboundContract;
 
   public static jsonResponse(res: Response, code: number, message: string) {
     return res.status(code).json({ message });
   }
 
-  public async execute(
-    req: Request,
-    res: Response,
-    next: NextFunction
-  ): Promise<void> {
+  public async execute(req: Request, res: Response): Promise<void> {
     try {
       this.validateInboundRequest(req, res);
       await this.handler(req, res);
